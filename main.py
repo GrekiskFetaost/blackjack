@@ -8,7 +8,8 @@ def play_game() -> None: #Create deck and the player/computer
     player = players()
     computer = players()
 
-    print("Players turn!")
+    print(" ")
+    print("PLAYERS TURN!")
     while True:
         card = deck.DrawCard() #Draw a card from the deck and save it in card
         player.add_card(card) #Add the card to players hand and update the score
@@ -21,8 +22,8 @@ def play_game() -> None: #Create deck and the player/computer
         choice = input("Vill du dra ett till kort? (J/N): ").lower() #Ask if the player wants to draw another card
         if choice != "j": #If not, break the loop
             break
-
-    print("Computers turn!")
+    print(" ")
+    print("COMPUTERS TURN!")
     while computer.score < 18: #The computer will keep drawing cards until the score is near 18
         card = deck.DrawCard() #Draw a card for the computer
         computer.add_card(card) #Add the card to computers hand and update the score
@@ -38,10 +39,11 @@ def play_game() -> None: #Create deck and the player/computer
         print("Computer wins, you Loose!")
     else: 
         print("Draw! ") #For draw situations
-    
+
 def play_again():
     while True:
-        svar = input("Play again? (j/n)").lower()
+        print(" ")
+        svar = input("PLAY AGAIN? (J/N)").lower()
         if svar == "j":
             play_game()
         elif svar == "n":
@@ -49,7 +51,6 @@ def play_again():
             sys.exit()
         else:
             print("Invalid input")
-
 
 if __name__ == "__main__":
     play_game()
