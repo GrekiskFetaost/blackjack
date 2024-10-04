@@ -6,7 +6,7 @@ import sys #Used for exiting the program
 def play_again(): #Infinite loop to keep asking the player if they want to play again.
     while True:
         print(" ") #Adds a space for better readability in the terminal.
-        svar = input(Fore.GREEN + "PLAY AGAIN? (y/n)" + Style.RESET_ALL).lower()
+        svar = input(Fore.GREEN + "PLAY AGAIN? (y/n) " + Style.RESET_ALL).lower()
         if svar == "y": #If players inputs "y", the game starts again.
             play_game()
         elif svar == "n": #If the player inputs "n", the game ends with a message and the program exits.
