@@ -1,6 +1,7 @@
 from typing import List
 from CardDeckClass import CardDeck 
 from colorama import Fore, Style
+import AsciiArt
 
 class players:
     def __init__(self) -> None:
@@ -38,6 +39,7 @@ def play_game() -> None: #Create deck and the player/computer
     deck = CardDeck()
     player = players()
     computer = players()
+    print(AsciiArt.logo)
     print(Fore.BLUE + "\nPLAYERS TURN!" + Style.RESET_ALL)
     while True:
         card = deck.DrawCard() #Draw a card from the deck and save it in card
@@ -47,10 +49,15 @@ def play_game() -> None: #Create deck and the player/computer
         if player.lost(): #Control if the player has lost above
             print(Fore.RED + f"You got {player.score} and lost the game!" + Style.RESET_ALL)
             return
-        
-        choice = input("Another card? (Y/N)").lower() #Ask if the player wants to draw another card
-        if choice != "y": #If not, break the loop
+        while True:
+            choice = input("Another card? (Y/N)").lower() #Ask if the player wants to draw another card
+            if choice == "y" or choice == "n":
+                break
+            else:
+                print(Fore.RED + "INVALID INPUT, Please enter y or n" + Style.RESET_ALL)
+        if choice != "y":
             break
+
     print(" ")
     print(Fore.YELLOW + "COMPUTERS TURN!" + Style.RESET_ALL)
     while computer.score < 17: #The computer will keep drawing cards until the score is near 18
@@ -61,6 +68,7 @@ def play_game() -> None: #Create deck and the player/computer
         if computer.lost(): #Checking if the computer has lost above
             print(Fore.RED + f"Computer got {computer.score} and lost the game!" + Style.RESET_ALL)
             return
+        
     #Compare the results to choose the winner.
     print(Fore.MAGENTA + "\nRESULTS" + Style.RESET_ALL)
     if computer.lost() or player.score > computer.score:
